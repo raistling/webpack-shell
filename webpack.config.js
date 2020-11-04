@@ -9,6 +9,7 @@ module.exports = {
     optimization: {
         minimizer: [ new OptimizeCssAssetsPlugin() ]
     },
+    
     module: {
         rules: [
             {
