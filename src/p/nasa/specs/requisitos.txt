@@ -1,0 +1,15 @@
+Trabajas en el departamento de desarrollo de software para la NASA.
+Unos investigadores internos necesitan una página web para realizar ciertas tareas de manera más sencilla y se te ha encomendado esta tarea a ti.
+
+A continuación aparecen las especificaciones:
+
+- La página principal deberá poder visualizarse la foto del día (pudiendo escoger el día que se quiera), el texto de la imagen y su título. Además también deberá dejar descargarla a local.
+
+- La página principal deberá de dar datos sobre los asteroides más cercanos de la tierra. Deberá mostrar cuantos se han detectado y cuantos son amenaza. También deberá mostrar los datos: Nombre, diámetro en KM, velocidad en Km/s y distancia de la tierra en distancia lunar de todos los asteroides que sean amenaza.
+
+- La página principal también deberá gestionar las peticiones que se hacen a la API de la NASA. Cuando se hace una petición a la API, en el header del response aparecen las peticiones que quedan para llegar al límite. Deben de mostrarse para que el investigador sepa cuantas le quedan.
+
+- La página principal deberá tener un botón de logout, eso implica tener un login.
+- El login deberá de autenticar al usuario y cargar su token de acceso a la API de la NASA en una variable de php.
+- Los datos de usuario estarán guardados en un mysql o mariaDB.
+- También se permitirá crear cuentas.

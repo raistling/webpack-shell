@@ -1,0 +1,11 @@
+mysql -u root
+mysql> CREATE DATABASE nasa;
+mysql> USE nasa;
+mysql> CREATE TABLE users (
+           id INT AUTO_INCREMENT PRIMARY KEY,
+           username VARCHAR(50) NOT NULL UNIQUE,
+           password VARCHAR(255) NOT NULL,
+           token VARCHAR(255)
+       );
+mysql> CREATE USER 'admin'@'localhost' IDENTIFIED BY 'abc123.';
+mysql> GRANT ALL PRIVILEGES ON nasa.* TO 'admin'@'localhost';

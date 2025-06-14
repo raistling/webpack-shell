@@ -1,0 +1,124 @@
+:root{
+  --bg-img-login: url('../img/bg-hr1.jpg');
+}
+
+.login {
+  margin: 0;
+  overflow: clip;
+  overflow-x: hidden;
+  contain: content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+}
+.bg-img{
+  background-image: var(--bg-img-login);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.init{
+  background-color: #e8e9ee;
+}
+.form-signin {
+  max-width: 500px;
+  min-width: 300px;
+  padding: 1rem;
+  z-index: 2;
+}
+.card, .wrapInput .form-control{
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.wrapInput{
+  margin-bottom: -1px;
+  margin-bottom: 10px;
+}
+
+.wrapInput .form-control{
+  border-radius: 0;
+}
+
+.form-signin .wrapInput .form-floating:last-child .form-control{
+  margin-bottom: -1px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.form-signin  .wrapInput .form-floating:first-child .form-control{
+  border-top-left-radius:5px;
+  border-top-right-radius: 5px;
+}
+
+.nav-user{
+  list-style: none;
+}
+.nav-user .nav-link {
+  color: #afafaf;
+}
+.nav-user .nav-link strong{
+  color: #eaeaea;
+}
+.nav-user .avatar{
+  display: flex;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  color:#fff;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.logo img{
+  width: 150px;
+}
+
+.header{
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255,255,255,0.9);
+}
+.bg-container{
+  background-color: rgba(255,255,255,0.9);
+}
+.info-user{
+  background-color: #4c4c4c;
+}
+[class*="info-"] .navbar-nav{
+  color: #b0b0b0;
+}
+.btn-link-danger {
+  color: #dc3545;
+  text-decoration: none;
+}
+.btn-link-danger:hover{
+  text-decoration-color: #dc3545;
+}
+
+.toast-fail{
+  z-index: 4;
+}
+.lh-1{
+  line-height:1rem;
+}
+
+@media (min-width: 768px) {
+  .body{ overflow: hidden;}
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+

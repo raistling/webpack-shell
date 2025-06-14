@@ -1,0 +1,28 @@
+Rúbrica proyecto NASA:
+
+Consume correctamente APIs de la NASA y es capaz de mostrar la información requerida recorriendo un JSON 	->		0.5 puntos
+Crea un login y funciona correctamente para acceder a la página principal 							->		0.1 puntos
+Crea una página para crear una cuenta y funciona correctamente									->		0.1 puntos
+Utiliza una BBDD para almacenar los usuarios y los tokens										->		0.3 puntos
+Crea un botón para descargar la imagen de la página actual										->		0.1 puntos
+Utiliza $_SESSION para almacenar información del usuario en sesión								->		0.2 puntos
+Utiliza $_COOKIE para almacenar la información requerida										->		0.2 puntos
+
+																				____________________
+																						1.5 puntos
+
+
+A mayores:
+
+Se valorará positivamente nunca negativamente el estilo utilizado, el esfuerzo a nivel estético y visual		->		0.5 puntos
+
+
+Aclaración:
+
+La puntuación de esta práctica nunca superará los 1.5 puntos. Los 0.5 puntos de estética nunca se aplicarán si se ha obtenido la puntuación máxima en la rúbrica.
+
+Entrega:
+
+Fecha máxima = 13/12/2024
+
+
