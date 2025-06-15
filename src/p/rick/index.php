@@ -5,9 +5,9 @@
         exit();
     }
 
-    // Llamada a la API de Rick y Morty
     $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-    
+
+// Llamada a la API de Rick y Morty
     $apiUrl = "https://rickandmortyapi.com/api/character?page=".$page;
     $response = file_get_contents($apiUrl);
     $data = json_decode($response, true);
@@ -24,12 +24,8 @@
     if(intval($_GET['page']) < 1){
         header("Location: ?page=". 1);
     }
-
- 
-
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,6 +35,12 @@
     <title>Rick y Morty</title>
     <!-- Bootstrap CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        nav{
+            width:100%;
+            overflow-x:auto;
+        }
+    </style>
 </head>
 
 <body class="bg-light">
@@ -55,6 +57,24 @@
                             <a href="?page=<?= $page + 1 ?>" class="btn btn-primary mx-1">Siguiente</a>
                         <?php endif; ?>
                     </div>
+                    <!-- Paginación con Bootstrap -->
+                    <nav>
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item <?php if ($page <= 1) echo 'disabled'; ?>">
+                                <a class="page-link" href="?page=<?= $page - 1 ?>">Anterior</a>
+                            </li>
+
+                            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                                <li class="page-item <?php if ($page == $i) echo 'active'; ?>">
+                                    <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                                </li>
+                            <?php endfor; ?>
+
+                            <li class="page-item <?php if ($page >= $totalPages) echo 'disabled'; ?>">
+                                <a class="page-link" href="?page=<?= $page + 1 ?>">Siguiente</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
                 <div class="text-center">
                     <!--TODO: Add requests -->
