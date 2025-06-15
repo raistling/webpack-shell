@@ -6,8 +6,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Simulación de usuarios (puedes conectar a una DB en el futuro)
     $users = [
-        "rick" => "portalgun",
-        "morty" => "getschwifty"
+        "rick" => "1234",
+        "morty" => "1234"
     ];
 
     if (isset($users[$username]) && $users[$username] == $password) {
@@ -29,7 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<img src="rickymorty.png" class="rounded mx-auto d-block">
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 50vh;">
     <div class="card p-4" style="width: 100%; max-width: 400px;">
         <h3 class="text-center mb-4">Login</h3>

@@ -1,9 +1,20 @@
 <?php
     session_start();
+
+    // si recibe el form de logout redirige a login, y destruye la sesión
+    if (isset($_POST["logout"])) {
+        session_unset(); // Elimina todas las variables de sesión
+        session_destroy(); // Destruye la sesión
+        header("Location: login.php"); // Redirige al inicio de sesión
+        exit();
+    }
+
+    // Si no existe sesión directamente redirecciona a login.php
     if (!isset($_SESSION["username"])) {
         header("Location: login.php");
         exit();
     }
+
 
     $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
@@ -24,6 +35,28 @@
     if(intval($_GET['page']) < 1){
         header("Location: ?page=". 1);
     }
+
+
+    // request de formulario de página específica
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["go"])) {
+        $page = intval($_POST["page"]); // Convertir el valor a número
+
+        // reescriben las variables que hidratan a la web.
+        $apiUrl = "https://rickandmortyapi.com/api/character?page=".$page;
+        $response = file_get_contents($apiUrl);
+        $data = json_decode($response, true);
+
+        // Si el número ingresado existe en el array, redirigir
+        if ($page < $totalPages && $page > 0) {
+
+            header("Location: ?page=". $page);
+
+        } else {
+            echo "Número inválido. Por favor, ingresa un número válido.";
+        }
+    }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -35,21 +68,15 @@
     <title>Rick y Morty</title>
     <!-- Bootstrap CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        nav{
-            width:100%;
-            overflow-x:auto;
-        }
-    </style>
 </head>
 
 <body class="bg-light">
-    <img src="rickymorty.png" class="rounded mx-auto d-block" onclick="location.href='.';">
+
         <div class="container mt-5">
             <div class="d-flex justify-content-center align-items-center mt-4">
                 <div class="w3-show-inline-block text-center">
                     <!-- Controles de Navegación -->
-                    <div class="d-flex justify-content-between mt-4">
+                    <div class="d-flex flex-wrap justify-content-between mt-4">
                         <?php if ($page > 1): ?>
                             <a href="?page=<?= $page - 1 ?>" class="btn btn-primary mx-1">Anterior</a>
                         <?php endif; ?>
@@ -58,8 +85,8 @@
                         <?php endif; ?>
                     </div>
                     <!-- Paginación con Bootstrap -->
-                    <nav>
-                        <ul class="pagination justify-content-center">
+                    <nav class="d-flex flex-wrap">
+                        <ul class="pagination flex-wrap justify-content-center">
                             <li class="page-item <?php if ($page <= 1) echo 'disabled'; ?>">
                                 <a class="page-link" href="?page=<?= $page - 1 ?>">Anterior</a>
                             </li>
@@ -78,9 +105,16 @@
                 </div>
                 <div class="text-center">
                     <!--TODO: Add requests -->
+                    <form method="post">
+                        <label for="page">Ingresa un número:</label>
+                        <input type="number" id="page" name="page" required>
+                        <button type="submit" name="go">Ir a la página</button>
+                    </form>
                 </div>
                 <!--TODO: Add the form to logout-->
-                <a href="login.php" class="btn btn-danger mt-4 ms-3">Cerrar sesión</a> 
+                <form action="logout.php" method="post">
+                    <button class="btn btn-danger" type="submit">Cerrar sesión</button>
+                </form>
 
             </div>
             <br>
@@ -89,6 +123,7 @@
                     <div class="col-md-4 text-center">
                         <img src="<?= $character["image"] ?>" alt="<?= $character["name"] ?>" class="img-fluid rounded-circle">
                         <p><strong><?= $character["name"] ?></strong></p>
+                        <p><strong><?= $character["location"]["url"] ?></strong></p>
                     </div>
                 <?php endforeach; ?>
             </div>
